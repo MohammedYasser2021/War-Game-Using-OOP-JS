@@ -1,0 +1,35 @@
+doctype
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    link(rel="stylesheet" href="./css/bootstrap.min.css")
+    link(rel="stylesheet" href="./css/style.css")
+    title War Game
+  body
+    div.stats.mb-4.d-flex.bg-secondary.p-3.justify-content-around.align-items-center
+      div.username.bg-info.p-2.text-white.text-capitalize Your Name: #[span.fw-bold ]
+      span.count.text-center.bg-white.py-2.px-3.fs-2 0:00
+    .container
+      div.box.d-flex.gap-5.mx-auto.mt-5.mb-5.justify-content-center
+        - var arrChar = [{title: "Narutto", src: "./images/character1.png"}, {title: "Sassaki", src: "./images/character3.jpg"}]
+        each ele in arrChar
+          div.person.border-2.border.border-secondary.p-4.text-center.flex-1
+            div.prog.mb-3(class=ele.title)
+              span
+            h2.mb-3= ele.title
+            img(src=ele.src alt="character" class="img-fluid mb-3")
+            div.btns.d-flex.gap-3.justify-content-center
+              button.btn.btn-danger(id=`${ele.title}-attack`) Attack
+              button.btn.btn-success(id=`${ele.title}-health`) Health
+            div.die.text-danger.fw-bold.fs-2.text-center(class=`die-${ele.title}`)= `${ele.title} Died` 
+    div.overlay
+      button.btn.btn-success.w-25.d-block.start Start
+    div.result-overlay
+      div
+        p.mb-3.text-danger.bg-white.p-2 Time Finished
+        p.result.mb-3.p-2 
+        button.start-again.btn.btn-info.text-white.p-2.w-25 Play Again
+    script(src="./js/bootstrap.bundle.js")
+    script(src="./js/main.js")
